@@ -1,0 +1,36 @@
+ /*#game-board {
+    background-color: white;
+    /* vmin ensures height and width are equal to each other */
+    /* width: 70vmin;
+    height: 70vmin;  */
+    /* display: grid;
+    align-items: center;
+    margin-top: 100px; */
+    /* changing the grid template garenteeds the grid is the exact set value on any screen; fr sets the width values  */
+    /* grid-template-columns: repeat(10, 1fr);
+    grid-template-rows: repeat(10, 1fr);
+
+}*/
+
+body {
+    /* height: 100vh;
+    width: 100vw; */
+    text-align: center;
+}
+
+/* .snake-head {
+    background-color: green;
+    border: .15vmin  white
+
+}
+.snake-body {
+    background-color: green;
+    border: .15vmin  white
+
+}
+
+.food {
+    background-color: yellow;
+    border: .15vmin  white
+
+} */
