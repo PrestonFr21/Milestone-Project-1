@@ -16,41 +16,52 @@ var snakeY = blockSize * 5;
 var snakeX = blockSize * 5;
 
 //snake food
-var foodY = blockSize * Math.floor(Math.random() * 40);
-var foodX = blockSize * Math.floor(Math.random() * 40);
+
+var foodY;
+var foodX;
+
+spawnFood = () => {
+    foodY = blockSize * Math.floor(Math.random() * 40);
+    foodX = blockSize * Math.floor(Math.random() * 40);
+} 
 
 var speedX = 0;
 var speedY = 0;
 
 
-window.onload = function() {
+window.onload = () => {
     canvas = document.getElementById("game-board");
     // board.height = rows * blockSize;
     // board.width = columns * blockSize;
     canvas.width = columns * blockSize;
     canvas.height = rows * blockSize;
     draw = canvas.getContext("2d"); 
-    
+
+    spawnFood();
     document.addEventListener("keyup", directionChange);
     setInterval(update, 1000/10);
 }
 
 
-function update() {
+update = () => {
     draw.fillStyle = "black";
     draw.fillRect(0, 0, canvas.width, canvas.height )
-
-    draw.fillStyle = "green";
-    snakeX += speedX * blockSize
-    snakeY += speedY * blockSize
-    draw.fillRect(snakeX, snakeY, blockSize, blockSize)
 
     draw.fillStyle = "yellow";
     draw.fillRect(foodX, foodY, blockSize, blockSize)
 
+    if (snakeX == foodX && snakeY == foodY) {
+        spawnFood();
+    }
+
+    draw.fillStyle = "gray";
+    snakeX += speedX * blockSize
+    snakeY += speedY * blockSize
+    draw.fillRect(snakeX, snakeY, blockSize, blockSize)
+
 }
 
-function directionChange(e) {
+directionChange = (e) => {
     if (e.code == "ArrowUp" && speedY != 1  ) { //snake shouldn't be able to go the opposite direction
         speedX = 0;
         speedY = -1;
@@ -59,11 +70,11 @@ function directionChange(e) {
         speedX = 0;
         speedY = 1;
     }
-    if (e.code == "ArrowLeft") {
+    else if (e.code == "ArrowLeft" && speedX != 1) {
         speedX = -1;
         speedY = 0;
     }
-    if (e.code == "ArrowRight") {
+    else if (e.code == "ArrowRight" && speedX != -1) {
         speedX = 1;
         speedY = 0;
     }
