@@ -1,21 +1,40 @@
- /*#game-board {
-    background-color: white;
-    /* vmin ensures height and width are equal to each other */
-    /* width: 70vmin;
-    height: 70vmin;  */
-    /* display: grid;
-    align-items: center;
-    margin-top: 100px; */
-    /* changing the grid template garenteeds the grid is the exact set value on any screen; fr sets the width values  */
-    /* grid-template-columns: repeat(10, 1fr);
-    grid-template-rows: repeat(10, 1fr);
+ #game-board {
+    border: 2px solid;
 
-}*/
+    /* vmin ensures height and width are equal to each other
+    width: 70vmin;
+    height: 70vmin;
+    changing the grid template garenteeds the grid is the exact set value on any screen; fr sets the width values
+    grid-template-columns: repeat(10, 1fr);
+    grid-template-rows: repeat(10, 1fr); */
 
-body {
+}
+
+#score-board {
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 75px ;
+}
+
+#game-div {
     /* height: 100vh;
     width: 100vw; */
     text-align: center;
+}
+
+
+#reset-game {
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 30px;
+    border: 3px solid;
+    border-radius: 15px;
+    background-color: aqua;
+
+
+}
+
+#reset-game:hover {
+    background-color: aliceblue;
+
 }
 
 /* .snake-head {
