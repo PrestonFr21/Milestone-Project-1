@@ -83,17 +83,17 @@ update = () => {
 directionChange = (e) => {
     if (e.code == "ArrowUp" && speedY != blockSize  ) { //snake shouldn't be able to go the opposite direction
         speedX = 0;
-        speedY = -blockSize;
+        speedY = -1 * blockSize;
     }
     else if (e.code == "ArrowDown" && speedY != -blockSize) { 
         speedX = 0;
         speedY = blockSize;
     }
     else if (e.code == "ArrowLeft" && speedX != blockSize) {
-        speedX = -blockSize;
+        speedX = -1 * blockSize;
         speedY = 0;
     }
-    else if (e.code == "ArrowRight" && speedX != -1 * blockSize) {
+    else if (e.code == "ArrowRight" && speedX != -blockSize) {
         speedX = blockSize;
         speedY = 0;
     }
