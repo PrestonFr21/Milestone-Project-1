@@ -81,20 +81,20 @@ update = () => {
 }
 
 directionChange = (e) => {
-    if (e.code == "ArrowUp" && speedY != 1  ) { //snake shouldn't be able to go the opposite direction
+    if (e.code == "ArrowUp" && speedY != blockSize  ) { //snake shouldn't be able to go the opposite direction
         speedX = 0;
-        speedY = -1 * blockSize;
+        speedY = -blockSize;
     }
-    else if (e.code == "ArrowDown" && speedY != -1) { 
+    else if (e.code == "ArrowDown" && speedY != -blockSize) { 
         speedX = 0;
-        speedY = 1 * blockSize;
+        speedY = blockSize;
     }
-    else if (e.code == "ArrowLeft" && speedX != 1) {
-        speedX = -1 * blockSize;
+    else if (e.code == "ArrowLeft" && speedX != blockSize) {
+        speedX = -blockSize;
         speedY = 0;
     }
-    else if (e.code == "ArrowRight" && speedX != -1) {
-        speedX = 1 * blockSize;
+    else if (e.code == "ArrowRight" && speedX != -1 * blockSize) {
+        speedX = blockSize;
         speedY = 0;
     }
 };
@@ -115,18 +115,3 @@ moveSnake = () => {
 }
 
 
-// function moveSnake(){
-//     const head = {x: snake[0].x + xVelocity,
-//                   y: snake[0].y + yVelocity};
-    
-//     snake.unshift(head);
-//     //if food is eaten
-//     if(snake[0].x == foodX && snake[0].y == foodY){
-//         score+=1;
-//         scoreText.textContent = score;
-//         createFood();
-//     }
-//     else{
-//         snake.pop();
-//     }     
-// };
