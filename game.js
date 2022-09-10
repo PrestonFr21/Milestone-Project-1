@@ -4,9 +4,10 @@ var draw;
 var blockSize = 20;
 var rows = 35;
 var columns = 35;
-let score = 0
-var scoreBoard = document.querySelector("#score-board")
-var resetGame = document.querySelector("#reset-game")
+let score = 0;
+var scoreBoard = document.querySelector("#score-board");
+var resetGame = document.querySelector("#reset-game");
+var gameOver = false;
 
 // var setCanvasSize = function() {
 //     canvas.width = columns * blockSize;
@@ -63,6 +64,9 @@ window.onload = () => {
 
 
 update = () => {
+    if (gameOver) {
+        return;
+    }
     draw.fillStyle = "aqua";
     draw.fillRect(0, 0, canvas.width, canvas.height )
 
@@ -71,6 +75,13 @@ update = () => {
 
     drawSnake();
     moveSnake();
+    checkGameOver();
+
+
+    // if(snake[0].x < 0 || snake[0].x > columns * blocksize || snake[0].y < 0 || snake[0].y > rows * blockSize) {
+    //     gameOver = true;
+    //     alert ("GAME OVER!");
+    // }
     
     // draw.fillStyle = "black";
     // snakeX += speedX * blockSize
@@ -83,14 +94,14 @@ update = () => {
 directionChange = (e) => {
     if (e.code == "ArrowUp" && speedY != blockSize  ) { //snake shouldn't be able to go the opposite direction
         speedX = 0;
-        speedY = -1 * blockSize;
+        speedY = -blockSize;
     }
     else if (e.code == "ArrowDown" && speedY != -blockSize) { 
         speedX = 0;
         speedY = blockSize;
     }
     else if (e.code == "ArrowLeft" && speedX != blockSize) {
-        speedX = -1 * blockSize;
+        speedX = -blockSize;
         speedY = 0;
     }
     else if (e.code == "ArrowRight" && speedX != -blockSize) {
@@ -112,6 +123,32 @@ moveSnake = () => {
     else{
         snake.pop();
     }
-}
+};
 
 
+function checkGameOver(){
+    switch(true){
+        case (snake[0].x < 0):
+            gameOver = true;
+            alert("GAME OVER!")
+            break;
+        case (snake[0].x >= canvas.width):
+            gameOver = true;
+            alert("GAME OVER!")
+            break;
+        case (snake[0].y < 0):
+            gameOver = true;
+            alert("GAME OVER!")
+            break;
+        case (snake[0].y >= canvas.height):
+            gameOver = true;
+            alert("GAME OVER!")
+            break;
+    }
+    for(let i = 1; i < snake.length; i+=1){
+        if(snake[i].x == snake[0].x && snake[i].y == snake[0].y){
+            gameOver = true;
+            alert("GAME OVER!")
+        }
+    }
+};
